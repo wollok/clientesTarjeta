@@ -83,7 +83,7 @@ Ok, esta solución tiene algunos inconvenientes:
 
 Por otra parte es fácil hacer que el cliente entre y salga de la promoción de puntos o habilite/deshabilite la opción Safe Shop. Como los requerimientos son simples de codificar, agregar condicionales (ifs) es una opción más que posible. Si en alguna otra parte necesitáramos hacer algo para los adheridos a safe shop o promoción, o bien si aparecieran muchas más condiciones comerciales quizás podría empezar a molestarme la cantidad de líneas agregadas en esos ifs.
 
-## Subclasificar?
+## ¿Subclasificar?
 
 Otra opción podría ser subclasificar el concepto ClientePosta. Tenemos así dos subclases: ClienteSafeShop y ClientePromocion.
 
