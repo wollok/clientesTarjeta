@@ -30,6 +30,8 @@ Vemos que Cliente intersecta el negocio de ambos sectores (Ventas y Condiciones 
 
 ## Primera solución: condicionales
 
+![elif](./images/elif3.jpg)
+
 Si priorizamos la **simplicidad** como atributo de calidad... bueno, lo más sencillo es modificar la clase Cliente:
 
 ![image](./images/if.png)
@@ -93,4 +95,6 @@ Esta alternativa separa claramente las responsabilidades de cada condición come
 
 No obstante esta opción presenta una clara desventaja: no sólo es complicado hacer que un cliente posta habilite/deshabilite el servicio de Safe Shop, **esta solución no permite que coexistan un cliente en promoción que también tenga safe shop**, y es el motivo que lo convierte en la solución menos deseable de todas.
 
-Seguimos en el branch: 02-strategies
+## Siguiente
+
+Seguimos en el branch: [02-strategies](https://github.com/wollok/clientesTarjeta/tree/02-strategy)
