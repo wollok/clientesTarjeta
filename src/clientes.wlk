@@ -12,7 +12,7 @@ class Cliente {
 
 	method comprar(monto) {
 		// SAFE SHOP	
-		if (monto > montoMaximoSafeShop) {
+		if (tieneSafeShop && monto > montoMaximoSafeShop) {
 			error.throwWithMessage("Debe comprar por menos de " + montoMaximoSafeShop)
 		}
 		
@@ -20,7 +20,7 @@ class Cliente {
 		deuda = deuda + monto
 		
 		// PROMOCION
-		if (monto > 20) {
+		if (tienePromocion && monto > 20) {
 			puntosPromocion = puntosPromocion + 15
 		}
 	}
