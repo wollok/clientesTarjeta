@@ -2,9 +2,15 @@ import clientes.*
 
 describe "tests de clientes" {
 
-	const clienteSafeShop = new Cliente(tieneSafeShop = true)
-	const clienteSafePromo = new Cliente(tienePromocion = true, tieneSafeShop = true) 
-		
+	const clienteSafeShop = new Cliente()
+	const clienteSafePromo = new Cliente() 
+
+	fixture {
+		clienteSafeShop.agregarCondicionComercial(safeShop)
+		clienteSafePromo.agregarCondicionComercial(safeShop)
+		clienteSafePromo.agregarCondicionComercial(promocion)
+	}
+			
 	test "cliente con safe shop compra por poco bien" {
 		clienteSafeShop.comprar(10)
 		assert.equals(10, clienteSafeShop.deuda())
@@ -24,5 +30,7 @@ describe "tests de clientes" {
 		assert.equals(15, clienteSafePromo.puntosPromocion())
 	}
 	
+	// TODO: Qué pasa si el cliente tiene promoción primero y luego safe shop,
+	// y quiere comprar por 50
 }
 
