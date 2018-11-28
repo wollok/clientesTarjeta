@@ -88,5 +88,5 @@ describe "tests de clientes" {
 
 ## La próxima variante
 
-Seguimos con 03-decorator
+Seguimos con [03-decorators](https://github.com/wollok/clientesTarjeta/tree/03-decorators)
 
