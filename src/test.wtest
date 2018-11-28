@@ -2,18 +2,14 @@ import clientes.*
 
 describe "tests de clientes" {
 
-	const clienteSafeShop = new Cliente()
-	const clienteSafePromo = new Cliente() 
+	const cliente1 = new Cliente()
+	const cliente2 = new Cliente()
+	const clienteSafeShop = new ClienteSafeShop(cliente1)
+	const clienteSafePromo = new ClientePromocion(new ClienteSafeShop(cliente2)) 
 
-	fixture {
-		clienteSafeShop.agregarCondicionComercial(safeShop)
-		clienteSafePromo.agregarCondicionComercial(safeShop)
-		clienteSafePromo.agregarCondicionComercial(promocion)
-	}
-			
 	test "cliente con safe shop compra por poco bien" {
 		clienteSafeShop.comprar(10)
-		assert.equals(10, clienteSafeShop.deuda())
+		assert.equals(10, cliente1.deuda())
 	}
 
 	test "cliente con safe shop no puede comprar por mucho" {
@@ -22,15 +18,13 @@ describe "tests de clientes" {
 
 	test "cliente con safe shop y promoción no puede comprar por mucho" {
 		assert.throwsExceptionWithMessage("Debe comprar por menos de 50", { clienteSafePromo.comprar(150) })
-		assert.equals(0, clienteSafePromo.puntosPromocion())
+		assert.equals(0, cliente2.puntosPromocion())
 	}
 
 	test "cliente con safe shop y promoción compra, valida y suma puntos promo" {
 		clienteSafePromo.comprar(25)
-		assert.equals(15, clienteSafePromo.puntosPromocion())
+		assert.equals(15, cliente2.puntosPromocion())
 	}
 	
-	// TODO: Qué pasa si el cliente tiene promoción primero y luego safe shop,
-	// y quiere comprar por 50
 }
 
