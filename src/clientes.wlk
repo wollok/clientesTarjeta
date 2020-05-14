@@ -30,7 +30,7 @@ class ClienteSafeShop inherits ClienteDecorador {
 
 	override method comprar(monto) {
 		if (monto > montoMaximoSafeShop) {
-			error.throwWithMessage("Debe comprar por menos de " + montoMaximoSafeShop)
+			throw new Exception(message = "Debe comprar por menos de " + montoMaximoSafeShop)
 		}
 		cliente.comprar(monto)
 	}	
