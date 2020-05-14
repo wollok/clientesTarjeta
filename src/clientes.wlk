@@ -1,11 +1,9 @@
 class Cliente {
-
 	var property deuda = 0
 	// PROMOCION
 	var property puntosPromocion = 0
 
 	method comprar(monto) {
-		// Comprar propiamente dicho
 		deuda = deuda + monto
 	}
 
@@ -14,32 +12,29 @@ class Cliente {
 	}
 }
 
-class ClienteDecorador {
+class ClienteConCondicionesComerciales {
 	const cliente
+	const condicionesComerciales = []
 	
-	constructor(_cliente) {
-		cliente = _cliente
+	method comprar(monto) {
+		condicionesComerciales.forEach { condicion => condicion.comprar(monto, cliente) }
+		cliente.comprar(monto)
 	}
-	
-	method comprar(monto)
 	method sumarPromocion(puntos) { cliente.sumarPromocion(puntos) }
 }
 	
-class ClienteSafeShop inherits ClienteDecorador {
+object safeShop {
 	var property montoMaximoSafeShop = 50
 
-	override method comprar(monto) {
+	method comprar(monto, cliente) {
 		if (monto > montoMaximoSafeShop) {
 			throw new Exception(message = "Debe comprar por menos de " + montoMaximoSafeShop)
 		}
-		cliente.comprar(monto)
 	}	
 }
 
-class ClientePromocion inherits ClienteDecorador {
-	
-	override method comprar(monto) {
-		cliente.comprar(monto)
+object promocion {
+	method comprar(monto, cliente) {
 		if (monto > 20) {
 			cliente.sumarPromocion(15)
 		}
