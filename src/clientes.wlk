@@ -1,10 +1,8 @@
 class Cliente {
 	var property deuda = 0
-	// PROMOCION
 	var property puntosPromocion = 0
 
 	method comprar(monto) {
-		// Comprar propiamente dicho
 		deuda = deuda + monto
 	}
 
