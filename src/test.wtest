@@ -4,8 +4,8 @@ describe "tests de clientes" {
 
 	const cliente1 = new Cliente()
 	const cliente2 = new Cliente()
-	const clienteSafeShop = new ClienteSafeShop(cliente1)
-	const clienteSafePromo = new ClientePromocion(new ClienteSafeShop(cliente2)) 
+	const clienteSafeShop = new ClienteSafeShop(cliente = cliente1)
+	const clienteSafePromo = new ClientePromocion(cliente = new ClienteSafeShop(cliente = cliente2)) 
 
 	test "cliente con safe shop compra por poco bien" {
 		clienteSafeShop.comprar(10)

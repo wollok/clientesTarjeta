@@ -1,5 +1,4 @@
 class Cliente {
-
 	var property deuda = 0
 	// PROMOCION
 	var property puntosPromocion = 0
@@ -17,14 +16,19 @@ class Cliente {
 class ClienteDecorador {
 	const cliente
 	
-	constructor(_cliente) {
-		cliente = _cliente
-	}
-	
 	method comprar(monto)
 	method sumarPromocion(puntos) { cliente.sumarPromocion(puntos) }
 }
 	
+class ClientePromocion inherits ClienteDecorador {
+	override method comprar(monto) {
+		cliente.comprar(monto)
+		if (monto > 20) {
+			cliente.sumarPromocion(15)
+		}
+	}
+}
+
 class ClienteSafeShop inherits ClienteDecorador {
 	var property montoMaximoSafeShop = 50
 
@@ -35,14 +39,3 @@ class ClienteSafeShop inherits ClienteDecorador {
 		cliente.comprar(monto)
 	}	
 }
-
-class ClientePromocion inherits ClienteDecorador {
-	
-	override method comprar(monto) {
-		cliente.comprar(monto)
-		if (monto > 20) {
-			cliente.sumarPromocion(15)
-		}
-	}
-}
-
